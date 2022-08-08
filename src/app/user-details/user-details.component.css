@@ -1,0 +1,12 @@
+.header {
+  display: inline-flex;
+}
+
+.add-btn {
+  position: absolute;
+  right: 2%;
+}
+
+.btn {
+  font-size: 13px !important;
+}

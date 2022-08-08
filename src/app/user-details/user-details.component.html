@@ -1,0 +1,113 @@
+<div class="col-md-8 offset-md-2 mt-4">
+  <div class="container">
+    <div class="card">
+      <div class="card-header text-start header">
+        <h5>User Details</h5>
+        <span class="add-btn"
+          ><button class="btn btn-success" (click)="addUser()">
+            Add New
+          </button></span
+        >
+      </div>
+      <form [formGroup]="userForm">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">E-Mail</th>
+              <th scope="col">Contact No.</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody
+            formArrayName="users"
+            *ngFor="let group of getFormData.controls; let i = index"
+          >
+            <tr [formGroupName]="i">
+              <td class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="name"
+                  placeholder="name"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    group.get('name').touched &&
+                    group.get('name').hasError('required')
+                  "
+                  >Name is required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    group.get('name').touched &&
+                    !group.get('name').hasError('required') &&
+                    group.get('name').hasError('nameError')
+                  "
+                  >Please enter a valid name</span
+                >
+              </td>
+              <td class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="email"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    group.get('email').touched &&
+                    group.get('email')?.hasError('required')
+                  "
+                  >Email required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    group.get('email').touched &&
+                    !group.get('email').hasError('required') &&
+                    group.get('email').hasError('emailErr')
+                  "
+                  >Please enter valid email
+                </span>
+              </td>
+              <td class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="contact"
+                  placeholder="mobile number"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    group.get('contact').touched &&
+                    group.get('contact')?.hasError('required')
+                  "
+                  >Contact required</span
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    group.get('contact').touched &&
+                    !group.get('contact').hasError('required') &&
+                    group.get('contact').hasError('contactErr')
+                  "
+                  >Please enter valid contact number
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteUser(i)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
