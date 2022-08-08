@@ -75,5 +75,5 @@
 </div>
 </div>
 <div *ngIf="openChild">
-  <app-user-details></app-user-details>
+  <app-user-details (gotologin)="getData($event)"></app-user-details>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { Form, FormArray, FormBuilder, FormControl, FormGroup, Validators } from
 })
 export class UserDetailsComponent implements OnInit {
   userForm : FormGroup;
+  @Output() gotologin = new EventEmitter<any>()
   userDetails = [
     {
       name : 'Smith',
@@ -134,6 +135,10 @@ export class UserDetailsComponent implements OnInit {
     else {
       return null
     }
+  }
+
+  navigateToLogin(){
+    this.gotologin.emit(false);
   }
 
 }

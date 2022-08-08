@@ -63,5 +63,9 @@ export class LoginComponent implements OnInit {
       return null;
     }
   }
+
+  getData(event) {
+    this.openChild = event;
+  }
  
 }

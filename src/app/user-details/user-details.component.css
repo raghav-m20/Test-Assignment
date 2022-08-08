@@ -10,3 +10,7 @@
 .btn {
   font-size: 13px !important;
 }
+
+.loginLink {
+  cursor: pointer;
+}
